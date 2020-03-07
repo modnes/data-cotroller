@@ -1,0 +1,24 @@
+{
+  "name": "modnes-data-cotroller",
+  "version": "1.0.0",
+  "description": "Module to Control Data by Handling Data Events",
+  "main": "data-controller.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizcanet/modnes-data-cotroller.git"
+  },
+  "keywords": [
+    "module",
+    "data",
+    "events"
+  ],
+  "author": "Luiz Henrique Canet Filho <me@luizca.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luizcanet/modnes-data-cotroller/issues"
+  },
+  "homepage": "https://github.com/luizcanet/modnes-data-cotroller#readme"
+}
