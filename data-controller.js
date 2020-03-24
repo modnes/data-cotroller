@@ -1,11 +1,50 @@
 /* global CustomEvent */
 
+/**
+ * modnes Data Controller
+ * @module modnes-data-controller
+ * @author Luiz Henrique Canet Filho <me@luizca.net>
+ */
+
+/**
+ * The built in event target interface.
+ * @external EventTarget
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/EventTarget|EventTarget}
+ */
+
+/**
+ * The built in custom event object.
+ * @external CustomEvent
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent|CustomEvent}
+ */
+
+/**
+ * The built in proxy object.
+ * @external Proxy
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy|Proxy}
+ */
+
+/**
+ * Data Handler
+ */
 export class DataHandler {
+  /**
+   * Create a data handler
+   * @param {EventTarget} eventTarget Object that will trigger dataUpdated event
+   * @param {string}      prefix      Prefix of the property beeing updated
+   */
   constructor (eventTarget, prefix) {
     this.eventTarget = eventTarget
     this.prefix = prefix
   }
 
+  /**
+   * Set a property
+   * @param {object}  target   An object beeng updated
+   * @param {string}  property The property name beeing updated
+   * @param {*}       value    The new value of the property
+   * @fires CustomEvent#dataUpdated
+   */
   set (target, property, value) {
     target[property] = value
     this.eventTarget.dispatchEvent(new CustomEvent('dataUpdated', {
@@ -18,6 +57,12 @@ export class DataHandler {
     return true
   }
 
+  /**
+   * Get a property
+   * @param  {object}     target   The target object
+   * @param  {strng}      property The property name
+   * @return {(*|Proxy)}           The property value or a new proxy
+   */
   get (target, property) {
     // return a new proxy if possible, add to prefix
     const out = target[property]
@@ -30,23 +75,46 @@ export class DataHandler {
   }
 }
 
+/**
+ * Data Controller
+ */
 export default class DataController {
+  /**
+   * Create a data controller
+   * @param {EventTarget} eventTarget Object that will host the data
+   */
   constructor (host) {
+    /**
+     * @listens external:CustomEvent~event:dataUpdated
+     */
     this.host = host
 
     this.setData({})
   }
 
+  /**
+   * Set the data
+   * @param {obect} data Data object
+   */
   setData (data) {
     this.host.controledData = new Proxy(data, new DataHandler(this.host, ''))
   }
 
+  /**
+   * Bind updated data to DOM using a mapping set
+   * @param  {object[]} mapping The mapping set
+   */
   bindDOM (mapping) {
     this.host.addEventListener('dataUpdated', event => {
       this.updateDOM(mapping, event.detail)
     })
   }
 
+  /**
+   * Update the DOM using a mapping set and data
+   * @param  {object[]} mapping The mapping set
+   * @param  {object}   data    The data object
+   */
   updateDOM (mapping, data) {
     const filteredMapping = mapping.filter(element => element.property === data.property)
 
@@ -69,6 +137,12 @@ export default class DataController {
     }
   }
 
+  /**
+   * Update an DOM element using a map configuration and a value
+   * @param  {HTMLElement}    element A DOM HTML element
+   * @param  {object}         map     Map configuration object
+   * @param  {string|number}  value   A string or number value
+   */
   updateElement (element, map, value) {
     if (map.attributes) {
       for (const attribute of map.attributes) {
@@ -85,6 +159,10 @@ export default class DataController {
     }
   }
 
+  /**
+   * Bind a form to data
+   * @param  {HTMLFormElement} form A form element
+   */
   bindForm (form) {
     const fields = form.elements
 
@@ -105,6 +183,11 @@ export default class DataController {
     }
   }
 
+  /**
+   * Update a data property using field value from form
+   * @param  {Element|RadioNodeList} field A form element
+   * @param  {HTMLFormElement}       form  A form element
+   */
   updateFromField (field, form) {
     const propertiesNodes = field.name.split('.')
     const propertiesNodesDepth = propertiesNodes.length
