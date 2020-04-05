@@ -5,7 +5,7 @@
   "type": "module",
   "main": "data-controller.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha 'test/data-controller.spec.js'",
     "build-documentation": "grunt documentation"
   },
   "repository": {
@@ -24,10 +24,14 @@
   },
   "homepage": "https://github.com/luizcanet/modnes-data-cotroller#readme",
   "devDependencies": {
+    "@babel/register": "^7.9.0",
+    "@istanbuljs/nyc-config-babel": "^3.0.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
     "grunt": "^1.1.0",
     "grunt-documentation": "^1.2.3",
-    "jsdom": "^16.2.1",
+    "jsdom": "^16.2.2",
+    "jsdom-global": "^3.0.2",
     "mocha": "^7.1.1",
     "nyc": "^15.0.0",
     "standard": "^14.3.3"

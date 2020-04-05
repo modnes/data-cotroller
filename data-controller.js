@@ -89,7 +89,18 @@ export default class DataController {
      */
     this.host = host
 
-    this.setData({})
+    Object.defineProperty(this.host, 'data', {
+      set: function (data) {
+        const dataController = new DataController(this)
+
+        dataController.setData(data)
+      },
+      get: function () {
+        return this.controledData || undefined
+      },
+      enumerable: true,
+      configurable: true
+    })
   }
 
   /**
@@ -156,6 +167,14 @@ export default class DataController {
       }
 
       element.insertAdjacentHTML('beforeEnd', map.template.replace(/{{\s*value\s*}}/g, value))
+    }
+
+    if (!map.template && !map.attributes) {
+      while (element.firstChild) {
+        element.removeChild(element.firstChild)
+      }
+
+      element.insertAdjacentHTML('beforeEnd', value)
     }
   }
 
