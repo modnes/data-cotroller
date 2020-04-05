@@ -2,6 +2,7 @@
   "name": "modnes-data-cotroller",
   "version": "1.0.0",
   "description": "Module to Control Data by Handling Data Events",
+  "type": "module",
   "main": "data-controller.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,7 +24,12 @@
   },
   "homepage": "https://github.com/luizcanet/modnes-data-cotroller#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
     "grunt": "^1.1.0",
-    "grunt-documentation": "^1.2.3"
+    "grunt-documentation": "^1.2.3",
+    "jsdom": "^16.2.1",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.0",
+    "standard": "^14.3.3"
   }
 }
