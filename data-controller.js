@@ -141,7 +141,7 @@ export default class DataController {
       }
 
       if (map.query) {
-        this.host.querySelectorAll(map.query).forEach(element => {
+        document.querySelectorAll(map.query).forEach(element => {
           this.updateElement(element, map, data.value)
         })
       }
@@ -227,7 +227,6 @@ export default class DataController {
         }
         break
       case 'select-multiple':
-        value = (field.dataset.asNumber !== undefined) ? Number(field.value) : field.value
         options = field.selectedOptions
         break
       default:
@@ -239,20 +238,18 @@ export default class DataController {
       if (propertiesNodesDepth === level) {
         if (options && options.length > 1) {
           if (property.endsWith('[]')) {
-            data = []
-
             for (const option of options) {
               const toPush = {}
 
               if (field.type === 'checkbox') {
                 if (option.checked) {
-                  toPush[property] = option.value
+                  toPush[property.replace('[]', '')] = option.value
+                  data.push(toPush)
                 }
               } else {
-                toPush[property] = option.value
+                toPush[property.replace('[]', '')] = (field.dataset.asNumber !== undefined) ? Number(option.value) : option.value
+                data.push(toPush)
               }
-
-              data.push(toPush)
             }
           } else {
             data[property] = []
@@ -276,7 +273,15 @@ export default class DataController {
         }
       } else {
         if (data[property] === undefined || data[property] === null) {
-          data[property] = {}
+          if (propertiesNodes[level].endsWith('[]')) {
+            data[property] = []
+          } else {
+            data[property] = {}
+          }
+        } else {
+          if (Array.isArray(data[property])) {
+            data[property] = []
+          }
         }
 
         updateProperty(data[property], propertiesNodes[level], level + 1)
