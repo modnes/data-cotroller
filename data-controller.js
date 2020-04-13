@@ -238,6 +238,8 @@ export default class DataController {
       if (propertiesNodesDepth === level) {
         if (options && options.length > 1) {
           if (property.endsWith('[]')) {
+            data.splice(0, data.length)
+
             for (const option of options) {
               const toPush = {}
 
@@ -277,10 +279,6 @@ export default class DataController {
             data[property] = []
           } else {
             data[property] = {}
-          }
-        } else {
-          if (Array.isArray(data[property])) {
-            data[property] = []
           }
         }
 
