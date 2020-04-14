@@ -4,7 +4,7 @@
   "description": "Module to Control Data by Handling Data Events",
   "main": "data-controller.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha 'test/data-controller.spec.js'",
     "build-documentation": "grunt documentation"
   },
   "repository": {
@@ -23,7 +23,26 @@
   },
   "homepage": "https://github.com/luizcanet/modnes-data-cotroller#readme",
   "devDependencies": {
+    "@babel/register": "^7.9.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "chai": "^4.2.0",
+    "esm": "^3.2.25",
     "grunt": "^1.1.0",
-    "grunt-documentation": "^1.2.3"
+    "grunt-documentation": "^1.2.3",
+    "jsdom": "^16.2.2",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^6.2.3",
+    "nyc": "^15.0.0",
+    "standard": "^14.3.3"
+  },
+  "mocha": {
+    "require": [
+      "esm",
+      "jsdom-global/register"
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
