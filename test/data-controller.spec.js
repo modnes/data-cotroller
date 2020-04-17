@@ -66,8 +66,8 @@ describe('Data Controller', function () {
     document.body.insertAdjacentElement('afterBegin', divElement)
     dataHost.dataController.bindDOM([{
       property: 'id',
-      element: divElement,
-      attributes: ['id']
+      elements: divElement,
+      attributes: 'id'
     }])
     dataHost.data.id = 'id-02'
 
@@ -101,13 +101,13 @@ describe('Data Controller', function () {
     dataHost.dataController.bindDOM([
       {
         property: 'person.name',
-        query: 'div',
+        elements: 'div',
         attributes: ['title'],
         template: '<h1>{{ value }}</h1>'
       },
       {
         property: 'person.bio',
-        query: 'span'
+        elements: 'span'
       }
     ])
 
@@ -172,23 +172,23 @@ describe('Data Controller', function () {
     dataHost.dataController.bindDOM([
       {
         property: 'person.name',
-        query: 'div',
+        elements: 'div',
         attributes: ['title'],
         template: '<h1>{{ value }}</h1>'
       },
       {
         property: 'person.age',
-        query: 'div',
+        elements: 'div',
         attributes: ['data-age']
       },
       {
         property: 'person.active',
-        query: 'div',
+        elements: 'div',
         attributes: ['data-active']
       },
       {
         property: 'person.bio',
-        query: 'span'
+        elements: 'span'
       }
     ])
     document.querySelector('[name="person.name"]').value = 'New Person Name'

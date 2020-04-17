@@ -1,4 +1,4 @@
-/* global CustomEvent */
+/* global CustomEvent, HTMLElement */
 
 /**
  * modnes Data Controller
@@ -191,18 +191,21 @@ export default class DataController {
     const filteredMapping = mapping.filter(element => element.property === data.property)
 
     for (const map of filteredMapping) {
-      if (map.element) {
-        this.updateElement(map.element, map, data.value)
+      if (map.elements instanceof HTMLElement) {
+        this.updateElement(map.elements, map, data.value)
       }
 
-      if (map.elements) {
+      if (
+        typeof map.elements[Symbol.iterator] === 'function' &&
+        typeof map.elements !== 'string'
+      ) {
         for (const element of map.elements) {
           this.updateElement(element, map, data.value)
         }
       }
 
-      if (map.query) {
-        document.querySelectorAll(map.query).forEach(element => {
+      if (typeof map.elements === 'string') {
+        document.querySelectorAll(map.elements).forEach(element => {
           this.updateElement(element, map, data.value)
         })
       }
@@ -216,7 +219,11 @@ export default class DataController {
    * @param  {string|number}  value   A string or number value
    */
   updateElement (element, map, value) {
-    if (map.attributes) {
+    if (typeof map.attributes === 'string') {
+      element.setAttribute(map.attributes, value)
+    }
+
+    if (Array.isArray(map.attributes)) {
       for (const attribute of map.attributes) {
         element.setAttribute(attribute, value)
       }
