@@ -55,8 +55,8 @@ The following are some examples of configuring mappings:
 const MAPPING_SET = [
   {
     property: 'id',
-    element: document.querySelector('#test'),
-    attributes: ['id']
+    elements: document.querySelector('#test'),
+    attributes: 'id'
   },
   {
     property: 'date',
@@ -64,23 +64,23 @@ const MAPPING_SET = [
   },
   {
     property: 'person.name',
-    query: 'div#person',
+    elements: 'div#person',
     attributes: ['title'],
     template: '<h1>{{ value }}</h1>'
   },
   {
     property: 'person.age',
-    query: 'div#person span.age',
+    elements: 'div#person span.age',
     attributes: ['data-age']
   },
   {
     property: 'person.active',
-    query: 'div#person .active',
+    elements: 'div#person .active',
     attributes: ['data-active']
   },
   {
     property: 'person.bio',
-    query: 'div#person .bio'
+    elements: 'div#person .bio'
   }
 ]
 
