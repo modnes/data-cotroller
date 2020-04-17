@@ -47,7 +47,7 @@ Data Controller provides more two main methods: bindDOM() and bindForm(). These 
 
 ### bindDOM
 
-The [`bindDOM()`](https://github.com/luizcanet/modnes-data-cotroller/wiki/API#binddom) method uses an array containing mapping set that bind properties modifications to elements in DOM. Each map must to set the `property` attribute from data in the host object.
+The [`bindDOM()`](https://github.com/modnes/data-cotroller/wiki/API#binddom) method uses an array containing mapping set that bind properties modifications to elements in DOM. Each map must to set the `property` attribute from data in the host object.
 
 The following are some examples of configuring mappings:
 
@@ -89,7 +89,7 @@ dataController.bindDOM(MAPPING_SET)
 
 ### bindForm
 
-The [`bindForm()`](https://github.com/luizcanet/modnes-data-cotroller/wiki/API#bindform) receives a form and binds each form element to a property from data by it name attribute.
+The [`bindForm()`](https://github.com/modnes/data-cotroller/wiki/API#bindform) receives a form and binds each form element to a property from data by it name attribute.
 
 ```html
 <form class="person-form">
@@ -119,4 +119,4 @@ let form = document.querySelector('.person-form')
 dataController.bindForm(form)
 ```
 
-See the [API documentation](https://github.com/luizcanet/modnes-data-cotroller/wiki/API)
+See the [API documentation](https://github.com/modnes/data-cotroller/wiki/API)
