@@ -1,11 +1,11 @@
 {
-  "name": "modnes-data-cotroller",
+  "name": "@modnes/data-cotroller",
   "version": "1.0.0",
   "description": "Module to Control Data by Handling Data Events",
   "main": "data-controller.js",
   "scripts": {
     "test": "standard && nyc mocha",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "build-documentation": "grunt documentation"
   },
   "repository": {
@@ -43,6 +43,12 @@
     "require": [
       "esm",
       "jsdom-global/register"
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
     ]
   },
   "standard": {
