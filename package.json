@@ -5,7 +5,7 @@
   "main": "data-controller.js",
   "scripts": {
     "test": "standard && nyc mocha",
-    "coveralls": "nyc mocha && nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "build-documentation": "grunt documentation"
   },
   "repository": {
@@ -43,6 +43,12 @@
     "require": [
       "esm",
       "jsdom-global/register"
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
     ]
   },
   "standard": {
