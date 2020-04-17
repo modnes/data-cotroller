@@ -71,7 +71,68 @@ export class DataHandler {
       return new Proxy(out, new DataHandler(this.eventTarget, this.prefix + property + '.'))
     }
 
+    if (Array.isArray(out)) {
+      return new Proxy(out, new ArrayHandler(this.eventTarget, this.prefix + property))
+    }
+
     return out
+  }
+}
+
+/**
+ * ArrayHandler
+ */
+export class ArrayHandler {
+  /**
+   * Create a data handler
+   * @param {EventTarget} eventTarget Object that will trigger dataUpdated event
+   * @param {string}      prefix      Prefix of the property beeing updated
+   */
+  constructor (eventTarget, property) {
+    this.eventTarget = eventTarget
+    this.property = property
+  }
+
+  /**
+   * Set a property
+   * @param {object}  target   An object beeng updated
+   * @param {string}  property The property name beeing updated
+   * @param {*}       value    The new value of the property
+   * @fires CustomEvent#dataUpdated
+   */
+  set (target, index, value) {
+    target[index] = value
+    this.eventTarget.dispatchEvent(new CustomEvent('dataUpdated', {
+      detail: {
+        index: index,
+        property: this.property,
+        value: value
+      }
+    }))
+
+    return true
+  }
+
+  get (target, property, receiver) {
+    switch (property) {
+      case 'copyWithin':
+      case 'fill':
+      case 'pop':
+      case 'push':
+      case 'reverse':
+      case 'shift':
+      case 'sort':
+      case 'splice':
+      case 'unshift':
+        this.eventTarget.dispatchEvent(new CustomEvent('dataUpdated', {
+          detail: {
+            property: this.property,
+            value: target
+          }
+        }))
+        break
+    }
+    return Reflect.get(target, property, receiver)
   }
 }
 
