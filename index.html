@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Data Controller - Module to Control Data by Handling Data Events</title>
+    <link href="styles/main.css" rel="stylesheet" type="text/css" />
+    <script src="custom-element/index.js" type="module"></script>
+  </head>
+  <body>
+    <header class="ui inverted vertical masthead center aligned segment">
+      <div class="ui text container">
+        <div class="ui secondary inverted menu">
+          <a class="item" href="https://github.com/modnes/data-controller/wiki">
+            Documentation
+          </a>
+          <a class="item" href="https://github.com/modnes/data-controller/wiki/API">
+            API
+          </a>
+
+          <div class="right menu">
+            <div class="item">
+              <a href='https://coveralls.io/github/modnes/data-controller?branch=master'>
+                <img src='https://coveralls.io/repos/github/modnes/data-controller/badge.svg?branch=master' alt='Coverage Status' />
+              </a>
+            </div>
+            <div class="item">
+              <iframe
+              src="https://ghbtns.com/github-btn.html?user=modnes&repo=data-controller&type=star&count=true"
+              frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui text container">
+        <h1 class="ui inverted header">Data Controller Module</h1>
+        <p class="ui inverted">Module to Control Data by Handling Data Events</p>
+      </div>
+    </header>
+    <main class="ui main container">
+      <div class="ui basic segment">
+        <div class="ui text container">
+          <p>
+            Data Controller is browser module that aims to let implementations
+            to know about data updates inside a data attribute of a host object
+            in a simple way.
+          </p>
+          <p>
+            It uses a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" rel="nofollow">Proxy</a> to capture any modification in the target data and comunicates changes dispatching an event called dataUpdated.
+          </p>
+          <h2>Installing</h2>
+          <p>
+            Using NPM:
+          </p>
+          <pre>
+<code>
+npm i @modnes/data-controller
+</code>
+          </pre>
+
+          <p>
+            Downloading package:
+            <a href="https://github.com/modnes/data-controller/archive/1.0.1.zip">
+              data-controller-1.0.1.zip
+            </a> |
+            <a href="https://github.com/modnes/data-controller/archive/1.0.1.tar.gz">
+              data-controller-1.0.1.tar.gz
+            </a>
+          </p>
+
+          <h2>Usage</h2>
+          <p>
+            This package is intended to be used as an ES module. So you can use
+            one of the loading forms shown below:
+          </p>
+
+          <h3>As HTML script tag</h3>
+          <pre>
+<code>
+&lt;script href="node_modules/@modnes/data-controller.js" type="module" /&gt;
+</code>
+          </pre>
+
+          <h3>As JavaScript Module</h3>
+          <pre>
+<code>
+import DataController from '../node_modules/@modnes/data-controller.js'
+</code>
+          </pre>
+
+          <p>
+            The Data Controller must receive an object that implements the
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget"
+              rel="nofollow">EventTarget</a> interface for to it be able to
+            dispatch events. This means it can be used within custom elements
+            for example. ;-)
+          </p>
+          <script src="https://gist.github.com/luizcanet/5df6d18c922ab66b9b744fda13d2d435.js"></script>
+
+          <h2>Working Example</h2>
+          <p>
+            This is a working example using Data Controller in a custom element:
+          </p>
+          <div>
+            <custom-element></custom-element>
+          </div>
+          <script src="https://gist.github.com/luizcanet/ea04ca98d529ef726604e13b0857d015.js"></script>
+          
+          <h2>Methods</h2>
+          <p>
+            Data Controller provides more two main methods: bindDOM() and
+            bindForm(). These methods allow building applications using the Two
+            Way Data Binding idea.
+          </p>
+
+          <h3>bindDOM</h3>
+          <p>
+            The <a href="https://github.com/modnes/data-controller/wiki/API#binddom">
+            <code>bindDOM()</code></a> method uses an array containing mapping
+            set that bind properties modifications to elements in DOM. Each map
+            must to set the <code>property</code> attribute from data in the
+            host object.
+          </p>
+          <script src="https://gist.github.com/luizcanet/506ae11ef878f1ce1029a8249300100f.js"></script>
+
+          <h3>bindForm</h3>
+          <p>
+            The <a href="https://github.com/modnes/data-controller/wiki/API#bindform">
+            <code>bindForm()</code></a> receives a form and binds each form
+            element to a property from data by it name attribute.
+          </p>
+          <script src="https://gist.github.com/luizcanet/adef27d609f236f6e52fb02f6209f988.js"></script>
+
+          <footer>
+            <p>
+              See the <a href="https://github.com/modnes/data-controller/wiki/API">
+              API documentation</a>
+            </p>
+          </footer>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

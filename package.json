@@ -1,0 +1,34 @@
+{
+  "name": "@modnes/data-controller-page",
+  "version": "1.0.0",
+  "description": "Data Controller Module Page",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm install && grunt",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modnes/data-controller.git"
+  },
+  "keywords": [
+    "page"
+  ],
+  "author": "Luiz Henrique Canet Filho <me@luizca.net>",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/modnes/data-controller/issues"
+  },
+  "homepage": "https://github.com/modnes/data-controller#readme",
+  "devDependencies": {
+    "grunt": "^1.1.0",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-watch": "^1.1.0",
+    "semantic-ui-less": "^2.4.1"
+  },
+  "dependencies": {
+    "@modnes/data-controller": "^1.0.1"
+  }
+}
