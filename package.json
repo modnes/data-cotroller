@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luizcanet/modnes-data-cotroller.git"
+    "url": "git+https://github.com/modnes/data-cotroller.git"
   },
   "keywords": [
     "module",
@@ -21,9 +21,9 @@
   "author": "Luiz Henrique Canet Filho <me@luizca.net>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/luizcanet/modnes-data-cotroller/issues"
+    "url": "https://github.com/modnes/data-cotroller/issues"
   },
-  "homepage": "https://github.com/luizcanet/modnes-data-cotroller#readme",
+  "homepage": "https://github.com/modnes/data-cotroller#readme",
   "devDependencies": {
     "@babel/register": "^7.9.0",
     "babel-eslint": "^10.1.0",
