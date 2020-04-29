@@ -9,7 +9,7 @@ It uses a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 Installing
 ----------
 
-    npm i modnes-data-controller
+    npm i @modnes/data-controller
 
 
 Usage
