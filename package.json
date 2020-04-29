@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/modnes/data-controller/issues"
   },
-  "homepage": "https://github.com/modnes/data-controller#readme",
+  "homepage": "https://modnes.github.io/data-controller/",
   "devDependencies": {
     "@babel/register": "^7.9.0",
     "babel-eslint": "^10.1.0",
