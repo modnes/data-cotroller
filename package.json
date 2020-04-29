@@ -1,6 +1,6 @@
 {
   "name": "@modnes/data-controller",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Module to Control Data by Handling Data Events",
   "main": "data-controller.js",
   "scripts": {
