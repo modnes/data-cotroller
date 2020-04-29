@@ -17,7 +17,7 @@ module.exports = function (grunt) {
       }
     },
     browserSync: {
-      default_options: {
+      default: {
         bsFiles: {
           src: [
             'index.html',
@@ -28,16 +28,27 @@ module.exports = function (grunt) {
         options: {
           server: {
             baseDir: ['./']
-          }
+          },
+          watchTask: true
         }
       }
     },
     copy: {
-      theme: {
-        expand: true,
-        cwd: 'node_modules/semantic-ui-less/themes/default/assets',
-        src: ['**'],
-        dest: 'themes/default/assets/'
+      default: {
+        files: [
+          {
+            expand: true,
+            cwd: 'node_modules/@modnes/data-controller',
+            src: ['*.js'],
+            dest: 'modules/modnes/data-controller/'
+          },
+          {
+            expand: true,
+            cwd: 'node_modules/semantic-ui-less/themes/default/assets',
+            src: ['**'],
+            dest: 'themes/default/assets/'
+          }
+        ]
       }
     }
   })
@@ -47,5 +58,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-copy')
 
-  grunt.registerTask('default', ['copy:theme', 'less', 'browserSync'])
+  grunt.registerTask('default', ['copy', 'less', 'browserSync', 'watch'])
 }

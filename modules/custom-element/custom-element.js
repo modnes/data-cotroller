@@ -1,4 +1,5 @@
-import DataController from '../node_modules/@modnes/data-controller/data-controller.js'
+/* global HTMLElement */
+import DataController from '../modnes/data-controller/data-controller.js'
 
 export default class CustomElement extends HTMLElement {
   constructor () {
@@ -10,7 +11,7 @@ export default class CustomElement extends HTMLElement {
         elapsed: 0,
         status: 'counting',
         button: {
-          label: 'Stop',
+          label: 'Stop'
         }
       }
     }
@@ -47,13 +48,13 @@ export default class CustomElement extends HTMLElement {
       </form>
     `)
 
-    let customElementText = this.querySelector('.custom-element-text')
-    let customElementSecondsElapsed = this.querySelector('.custom-element-seconds-elapsed')
-    let secondsElapsedInput = this.querySelector('input[name="seconds.elapsed"]')
-    let customElementSecondsStatus = this.querySelector('.custom-element-seconds-status')
-    let countStopButton = this.querySelector('.count-stop-button')
-    let restartButton = this.querySelector('.restart-button')
-    
+    const customElementText = this.querySelector('.custom-element-text')
+    const customElementSecondsElapsed = this.querySelector('.custom-element-seconds-elapsed')
+    const secondsElapsedInput = this.querySelector('input[name="seconds.elapsed"]')
+    const customElementSecondsStatus = this.querySelector('.custom-element-seconds-status')
+    const countStopButton = this.querySelector('.count-stop-button')
+    const restartButton = this.querySelector('.restart-button')
+
     this.dataController.bindDOM([
       {
         property: 'text',
@@ -79,9 +80,9 @@ export default class CustomElement extends HTMLElement {
         elements: countStopButton
       }
     ])
-    
+
     this.dataController.bindForm(this.querySelector('.custom-element-form'))
-    
+
     countStopButton.addEventListener('click', () => {
       if (this.data.seconds.status === 'counting') {
         this.stopCountElapsedSeconds()
@@ -89,14 +90,14 @@ export default class CustomElement extends HTMLElement {
         this.startCountElapsedSeconds()
       }
     })
-    
+
     restartButton.addEventListener('click', () => {
       this.data.seconds.elapsed = 0
     })
-    
+
     this.startCountElapsedSeconds()
   }
-  
+
   startCountElapsedSeconds () {
     this.countElapsedSeconds = setInterval(() => { this.data.seconds.elapsed++ }, 1000)
     this.data.seconds.status = 'counting'

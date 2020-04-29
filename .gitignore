@@ -1,3 +1,2 @@
-node_modules/*
-!node_modules/@modnes/data-controller
+node_modules
 wiki

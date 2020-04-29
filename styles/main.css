@@ -21650,10 +21650,6 @@ Floated Menu / Item
 /*******************************
          Theme Overrides
 *******************************/
-/* Base */
-img {
-  max-width: 100%;
-}
 /* Layout */
 .main.container {
   margin-top: 3em;
