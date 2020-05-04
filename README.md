@@ -80,7 +80,8 @@ const MAPPING_SET = [
   },
   {
     property: 'person.bio',
-    elements: 'div#person .bio'
+    elements: 'div#person .bio',
+    template: value => `<blockquote>${value}<blockquote>`
   }
 ]
 

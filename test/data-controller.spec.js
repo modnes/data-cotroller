@@ -174,7 +174,7 @@ describe('Data Controller', function () {
         property: 'person.name',
         elements: 'div',
         attributes: ['title'],
-        template: '<h1>{{ value }}</h1>'
+        template: value => `<h1>${value}</h1>`
       },
       {
         property: 'person.age',
@@ -213,6 +213,7 @@ describe('Data Controller', function () {
     document.querySelector('[name="person.favoriteFruits.name[]"]').dispatchEvent(new Event('change'))
 
     expect(document.querySelector('div').getAttribute('title')).to.be.equal('New Person Name')
+    expect(document.querySelector('h1').textContent).to.be.equal('New Person Name')
     expect(document.querySelector('div').getAttribute('data-age')).to.be.equal('25')
     expect(document.querySelector('div').getAttribute('data-active')).to.be.equal('true')
     expect(dataHost.data.person.children).to.be.equal(3)
