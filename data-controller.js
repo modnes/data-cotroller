@@ -2,7 +2,7 @@
 
 /**
  * modnes Data Controller
- * @module modnes-data-controller
+ * @module modnes/data-controller
  * @author Luiz Henrique Canet Filho <me@luizca.net>
  */
 
@@ -234,7 +234,11 @@ export default class DataController {
         element.removeChild(element.firstChild)
       }
 
-      element.insertAdjacentHTML('beforeEnd', map.template.replace(/{{\s*value\s*}}/g, value))
+      if (typeof map.template === 'function') {
+        element.insertAdjacentHTML('beforeEnd', map.template(value).replace(/{{\s*value\s*}}/g, value))
+      } else {
+        element.insertAdjacentHTML('beforeEnd', map.template.replace(/{{\s*value\s*}}/g, value))
+      }
     }
 
     if (!map.template && !map.attributes) {
