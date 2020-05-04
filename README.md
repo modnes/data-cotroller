@@ -1,6 +1,8 @@
 Data Controller Module
 ======================
 
+[![Coverage Status](https://coveralls.io/repos/github/modnes/data-controller/badge.svg?branch=master)](https://coveralls.io/github/modnes/data-controller?branch=master)
+
 Data Controller is browser module that aims to let implementations to know about data updates inside a data attribute of a host object in a simple way.
 
 It uses a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) to capture any modification in the target data and comunicates changes dispatching an event called `dataUpdated`.
