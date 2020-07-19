@@ -51,8 +51,5 @@
       "lcov",
       "text"
     ]
-  },
-  "standard": {
-    "parser": "babel-eslint"
   }
 }

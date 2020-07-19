@@ -239,6 +239,8 @@ export default class DataController {
       } else {
         element.insertAdjacentHTML('beforeEnd', map.template.replace(/{{\s*value\s*}}/g, value))
       }
+
+      element.dispatchEvent(new CustomEvent('elementRendered'))
     }
 
     if (!map.template && !map.attributes) {
