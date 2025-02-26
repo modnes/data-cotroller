@@ -264,7 +264,6 @@ export default class DataController {
         case 'file':
           break
         default:
-          this.updateFromField(field, form)
           field.addEventListener('input', () => {
             this.updateFromField(field, form)
           })
